@@ -1,0 +1,45 @@
+Sub premimum_calc()
+
+
+For j = 1 To 7
+    For k = 9 To 79
+         Sheets("All Payments").Cells(k - 7, j + 6).Value = 0
+    Next k
+Next j
+
+
+For i = 2 To 101
+
+
+    Sheets("Calculator").Cells(9, "B").Value = Sheets("Block of Business").Cells(i, "B").Value
+    Sheets("Calculator").Cells(13, "B").Value = Sheets("Block of Business").Cells(i, "C").Value
+    Sheets("Calculator").Cells(18, "B").Value = Sheets("Block of Business").Cells(i, "D").Value
+    Sheets("Calculator").Cells(22, "B").Value = Sheets("Block of Business").Cells(i, "E").Value
+    
+    For j = 1 To 7
+        
+        If Sheets("Calculator").Cells(9, "B").Value = j Then
+            
+            For k = 9 To 79
+                m = Sheets("Calculator").Cells(k, "G").Value
+                Sheets("All Payments").Cells(k - 7, j + 6).Value = Sheets("All Payments").Cells(k - 7, j + 6).Value + m
+               
+                'Sheets("Summaries").Cells(Sheets("Calculator").Cells(13, "B").Value - 25, j + 2).Value = Sheets("Summaries").Cells(Sheets("Calculator").Cells(13, "B").Value - 25, j + 2).Value + Sheets("Calculator").Cells(9, "J").Value
+            
+            Next k
+                
+        End If
+        
+        
+        
+    Next j
+    
+    
+    Sheets("All Payments").Cells(i, "B").Value = Sheets("Calculator").Cells(9, "J").Value
+    Sheets("All Payments").Cells(i, "C").Value = Sheets("Calculator").Cells(13, "J").Value
+    Sheets("All Payments").Cells(i, "D").Value = Sheets("Calculator").Cells(18, "J").Value
+
+Next i
+
+
+End Sub
